@@ -1,0 +1,12 @@
+USE pubs;
+GO
+
+CREATE TABLE dbo.PUB_INFO (
+    pub_id   CHAR(4) NOT NULL,
+    logo     VARBINARY(MAX),
+    pr_info  TEXT,
+    CONSTRAINT PK_PUB_INFO PRIMARY KEY (pub_id),
+    CONSTRAINT FK_PUB_INFO_PUBLISHERS
+        FOREIGN KEY (pub_id) REFERENCES dbo.PUBLISHERS(pub_id)
+);
+SELECT * FROM dbo.PUB_INFO;

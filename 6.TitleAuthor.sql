@@ -1,0 +1,16 @@
+USE pubs;
+GO
+
+CREATE TABLE dbo.TITLEAUTHOR (
+    au_id      VARCHAR(11) NOT NULL,
+    title_id   VARCHAR(6)  NOT NULL,
+    au_ord     TINYINT,
+    royaltyper INT,
+    CONSTRAINT PK_TITLEAUTHOR 
+        PRIMARY KEY (au_id, title_id),
+    CONSTRAINT FK_TITLEAUTHOR_AUTHORS
+        FOREIGN KEY (au_id) REFERENCES dbo.AUTHORS(au_id),
+    CONSTRAINT FK_TITLEAUTHOR_TITLES
+        FOREIGN KEY (title_id) REFERENCES dbo.TITLES(title_id)
+);
+SELECT * FROM dbo.TITLEAUTHOR;
